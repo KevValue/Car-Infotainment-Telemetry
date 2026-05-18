@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": true, // ignores jest module
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
@@ -23,6 +23,8 @@
     }
   },
   "include": [
+    "src",
+    "tests",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
