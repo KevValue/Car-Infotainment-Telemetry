@@ -1,11 +1,11 @@
 import { als } from '../logging/als'
-import { winstonLogger } from '../winston'
+import { winstonLoggerInstance } from '../adapters/WinstonLogger'
 import { measureDuration } from '@/src/utils/metrics/request-duration'
 import { createRequestContext } from './context/createRequestContext'
 import { logError } from './utils/logError'
 import isMeasuredError from './utils/isMeasuredError'
 
-const ENABLE_DURATION = process.env.LOG_DURATION === "true"
+const isDurationOn = () => process.env.LOG_DURATION === "true"
 
 // middleware context responsiblity through context #1
 export function withRequestContext(handler: Function) {
@@ -22,9 +22,9 @@ export function withRequestContext(handler: Function) {
           url: req.url,
         }
 
-        const durationContext = ENABLE_DURATION ? { durationMs } : {}
+        const durationContext = isDurationOn() ? { durationMs } : {}
 
-        winstonLogger.info("request completed", {
+        winstonLoggerInstance.info("request completed", {
           ...correlationContext,
           ...durationContext,
           ...baseContext,
@@ -39,7 +39,7 @@ export function withRequestContext(handler: Function) {
           const { err: durationErr, durationMs } = error
 
 
-          const durationContext = ENABLE_DURATION ? { durationMs } : {}
+          const durationContext = isDurationOn() ? { durationMs } : {}
 
           throw logError(durationErr, { ...correlationContext, ...durationContext })
         }

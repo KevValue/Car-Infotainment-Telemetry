@@ -29,3 +29,5 @@ export class WinstonLogger implements ILogger {
     this.log('debug', message, context)
   }
 }
+
+export const winstonLoggerInstance = new WinstonLogger()

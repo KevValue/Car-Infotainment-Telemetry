@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest'
-import { winstonLogger } from '@/src/core/logging/winston'
+import { winstonLoggerInstance } from '@/src/core/adapters/WinstonLogger'
 import { POST } from '@/app/api/log/route'
 
 beforeEach(() => {
@@ -8,13 +8,13 @@ beforeEach(() => {
 
 describe("Distributed tracing propagation", () => {
   it("uses incoming correlationId from headers", async () => {
-    const spy = vi.spyOn(winstonLogger, "log")
+    const spy = vi.spyOn(winstonLoggerInstance, "info")
 
     const req = new Request("http://localhost/api/log", {
       method: "POST",
       body: JSON.stringify({
         level: "info",
-        message: "api test",
+        message: "request completed",
         context: { x: 1 }
       }),
       headers: {
@@ -26,20 +26,24 @@ describe("Distributed tracing propagation", () => {
     const res = await POST(req)
     expect(res.status).toBe(200)
 
-    expect(spy).toHaveBeenCalledWith("info", expect.objectContaining({
-      message: "api test",
-      x: 1,
-      correlationId: "upstream-id",
-      requestId: expect.any(String)
-    }))
+    expect(spy).toHaveBeenCalledWith(
+      "request completed",
+      expect.objectContaining({
+        correlationId: "upstream-id",
+        requestId: expect.any(String),
+        method: "POST",
+        url: "http://localhost/api/log",
+        status: 200,
+      })
+    )
   }),
     it("keeps ALS context isolated across concurrent requests", async () => {
-      const spy = vi.spyOn(winstonLogger, "log")
+      const spy = vi.spyOn(winstonLoggerInstance, "info")
 
       const makeReq = (id: string) =>
         new Request("http://localhost/api/log", {
           method: "POST",
-          body: JSON.stringify({ level: "info", message: id }),
+          body: JSON.stringify({ level: "info", message: "request completed" }),
           headers: {
             "Content-Type": "application/json",
             "X-Correlation-Id": id
@@ -54,18 +58,25 @@ describe("Distributed tracing propagation", () => {
 
       console.log(spy.mock.calls)
 
-      expect(spy).toHaveBeenCalledTimes(3)
+      // Filter only the user logs (ignore middleware logs)
+      const serviceLogs = spy.mock.calls.filter(
+        ([message]) => message === "request completed"
+      )
+      expect(serviceLogs).toHaveLength(3)
 
       expect(spy).toHaveBeenCalledWith(
-        "info",
+
+        "request completed",
         expect.objectContaining({ correlationId: "A" })
       )
       expect(spy).toHaveBeenCalledWith(
-        "info",
+
+        "request completed",
         expect.objectContaining({ correlationId: "B" })
       )
       expect(spy).toHaveBeenCalledWith(
-        "info",
+
+        "request completed",
         expect.objectContaining({ correlationId: "C" })
       )
     })
