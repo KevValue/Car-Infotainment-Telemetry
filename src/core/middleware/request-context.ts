@@ -24,11 +24,14 @@ export function withRequestContext(handler: Function) {
 
         const durationContext = isDurationOn() ? { durationMs } : {}
 
+        const source = "middleware"
+
         winstonLoggerInstance.info("request completed", {
           ...correlationContext,
           ...durationContext,
           ...baseContext,
-          status: result.status
+          status: result.status,
+          source: source
         })
 
         return result

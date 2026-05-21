@@ -9,7 +9,7 @@ export class WinstonLogger implements ILogger {
       message,
       ...context,
       ...store,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     })
   }
 

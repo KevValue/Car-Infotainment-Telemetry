@@ -39,6 +39,7 @@ describe("POST /api/log", () => {
         method: "POST",
         url: "http://localhost/api/log",
         status: 200,
+        source: "middleware"
       })
     )
   })
@@ -80,6 +81,7 @@ describe("POST /api/log – duration enabled", () => {
         method: "POST",
         url: "http://localhost/api/log",
         status: 200,
+        source: "middleware"
       })
     )
   })

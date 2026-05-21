@@ -1,4 +1,3 @@
-import { NextRequest, NextResponse } from 'next/server'
 import { WinstonLogger } from '@/src/core/adapters/WinstonLogger'
 import { withRequestContext } from '@/src/core/middleware/request-context'
 
@@ -7,6 +6,8 @@ const logger = new WinstonLogger()
 // middleware at request time
 export const POST = withRequestContext(async (req: Request) => {
   const body = await req.json()
+
+  // application level logging
   logger.log(body.level, body.message, body.context)
   return Response.json({ ok: true })
 })
