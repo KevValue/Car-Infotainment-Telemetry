@@ -1,3 +1,5 @@
+import { VehicleTelemetry } from "@/src/types/domain/telemetry/types";
+
 export const initialVehicleTelemetry: VehicleTelemetry = {
   rpm: 0,
   speed: 0,
