@@ -9,6 +9,8 @@ export interface TelemetryStore {
   lastUpdated: number | null
   isLoading: boolean
 
+  setSpeed: (speed: number) => void
+  updateField: (key: any, value: any) => void
   setTelemetry: (data: VehicleTelemetry) => void
   setPhase: (phase: TelemetryPhase) => void
   setError: (error: string) => void

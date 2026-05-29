@@ -11,6 +11,25 @@ export const useTelemetryStore = create<TelemetryStore>((set) => ({
   lastUpdated: null,
   isLoading: false,
 
+  setSpeed: (speed: number) =>
+    set((state) => ({
+      telemetry: {
+        ...(state.telemetry ?? {} as VehicleTelemetry),
+        speed
+      },
+      lastUpdated: Date.now()
+    })
+    ),
+
+  updateField: (key, value) =>
+    set((state) => ({
+      telemetry: {
+        ...(state.telemetry ?? {} as VehicleTelemetry),
+        [key]: value
+      },
+      lastUpdated: Date.now()
+    })),
+
   setTelemetry: (data: VehicleTelemetry) =>
     set({
       telemetry: data,

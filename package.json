@@ -27,6 +27,7 @@
     "@vitest/ui": "^4.1.6",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "framer-motion": "^12.40.0",
     "jest": "^30.4.2",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.9",
