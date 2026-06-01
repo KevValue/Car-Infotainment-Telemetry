@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { NavBar } from "@/components/shared/navigation/NavBar";
+import { NavSpacer } from "@/components/shared/navigation/NavSpacer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +24,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const coreLinks = [
+    { label: "Home", href: "/", order: 1, position: "left" },
+    { label: "About", href: "/about", order: 2, position: "middle" },
+    { label: "Contact", href: "/contact", order: 3, position: "right" },
+  ]
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <div className="h-[200px]"></div>
+        <NavSpacer>
+
+          <div className="fixed top-0 w-full h-[200px]"></div>
+          <NavBar links={coreLinks} />
+        </NavSpacer>
+        {children}
+      </body>
     </html>
   );
 }
