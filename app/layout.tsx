@@ -26,9 +26,11 @@ export default function RootLayout({
 }>) {
 
   const coreLinks = [
-    { label: "Home", href: "/", order: 1, position: "left" },
-    { label: "About", href: "/about", order: 2, position: "middle" },
-    { label: "Contact", href: "/contact", order: 3, position: "right" },
+    { label: "Telemetry", href: "/", order: 1, position: "left" },
+    { label: "Explore", href: "/explore", order: 2, position: "middle" },
+    { label: "Docs", href: "/docs", order: 3, position: "middle" },
+    { label: "Navigation", href: "/navigation", order: 4, position: "middle" },
+    { label: "Profile", href: "/profile", order: 5, position: "right" },
   ]
 
   return (
@@ -37,11 +39,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <div className="h-[200px]"></div>
+        <div className="h-[200px] flex items-center justify-center">
+          KV Telemetry
+        </div>
         <NavSpacer>
-
           <div className="fixed top-0 w-full h-[200px]"></div>
           <NavBar links={coreLinks} />
+
         </NavSpacer>
         {children}
       </body>

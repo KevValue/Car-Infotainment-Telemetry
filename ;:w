@@ -29,7 +29,7 @@ export function DashboardLayout({ core, children }: DashLayoutProps) {
           </GlobalGridItem>
 
           <GlobalGridItem span={3}>
-            <div className="py-4">Stats</div>
+            <div>Stats</div>
             <aside>{core.stats}</aside>
           </GlobalGridItem>
 
