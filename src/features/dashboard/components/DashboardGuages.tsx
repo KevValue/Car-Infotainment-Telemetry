@@ -1,11 +1,17 @@
 'use client'
 
+import { useEffect } from "react"
 import { useTelemetryStore } from "../../telemetry/store/useTelemetryStore"
 import { SpeedGauge } from "./gauges/SpeedGauge"
 import { TelemetryProducer } from "./TelemetryProducer"
 
 export function DashboardGauges() {
   const speed = useTelemetryStore((s) => s.telemetry?.speed)
+
+  useEffect(() => {
+    // run on remount,
+    // To do note: TelemetryProducer returning capabilities as definitions, rather than ui
+  }, [])
 
   return (
     <div>

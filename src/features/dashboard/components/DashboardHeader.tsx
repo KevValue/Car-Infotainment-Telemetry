@@ -1,5 +1,5 @@
 export function DashboardHeader() {
   return (
-    <div>Cluster</div>
+    <div>Gauge Cluster</div>
   )
 }

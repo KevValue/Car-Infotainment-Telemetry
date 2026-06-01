@@ -1,3 +1,5 @@
+import { GlobalGrid } from '@/components/shared/globalGrid/GlobalGrid'
+import { GlobalGridItem } from '@/components/shared/globalGrid/GlobalGridItem'
 import { ReactNode } from 'react'
 
 interface DashboardCore {
@@ -18,12 +20,24 @@ export function DashboardLayout({ core, children }: DashLayoutProps) {
         {core.header}
       </header>
 
-      <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <section className="lg:col-span-2">{core.gauges}</section>
+      <main className="flex-1 p-6">
+        <GlobalGrid>
+          <GlobalGridItem span={{ base: 12, sm: 6, md: 6 }}>
+            {core.gauges}
+          </GlobalGridItem>
 
-        <aside>{core.stats}</aside>
+          <GlobalGridItem span={3}>
+            <aside>{core.stats}</aside>
+          </GlobalGridItem>
 
-        {children}
+          <GlobalGridItem span={6}>
+            <aside>{core.stats}</aside>
+          </GlobalGridItem>
+
+          <GlobalGridItem span={12}>
+            {children}
+          </GlobalGridItem>
+        </GlobalGrid>
       </main>
     </div>
   )
