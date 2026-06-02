@@ -30,12 +30,12 @@ export const useTelemetryStore = create<TelemetryStore>((set) => ({
       lastUpdated: Date.now()
     })),
 
-  setTelemetry: (data: VehicleTelemetry) =>
-    set({
-      telemetry: data,
+  setTelemetry: (data: Partial<VehicleTelemetry>) =>
+    set((state) => ({
+      telemetry: { ...state.telemetry, ...data } as VehicleTelemetry, // assert full type, because type script is hinting that some fields are undefined
       error: null,
       lastUpdated: Date.now(),
-    }),
+    })),
 
   setPhase: (phase: TelemetryPhase) =>
     set({ phase }),

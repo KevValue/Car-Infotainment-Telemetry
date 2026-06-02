@@ -30,18 +30,19 @@ export function DashboardLayout({ core, children }: DashLayoutProps) {
             {core.gauges}
           </GlobalGridItem>
 
-          <GlobalGridItem span={3}>
+          <GlobalGridItem span={{ base: 12, sm: 3 }}>
             <div className="py-4">Stats</div>
             <aside>{core.stats}</aside>
           </GlobalGridItem>
 
-          <GlobalGridItem span={3}>
+          <GlobalGridItem span={{ base: 12, sm: 3 }}>
             <div className="py-4">Trends</div>
             <aside>{core.trends}</aside>
           </GlobalGridItem>
 
-          <GlobalGridItem span={6}>
-            <aside>{core.stats}</aside>
+          <GlobalGridItem span={{ base: 12, sm: 6 }}>
+            <div className="py-4">Controls</div>
+            <aside>{core.controls}</aside>
           </GlobalGridItem>
 
           <GlobalGridItem span={12}>

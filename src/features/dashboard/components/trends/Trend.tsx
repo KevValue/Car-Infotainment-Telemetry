@@ -15,7 +15,7 @@ export function Trend() {
         {TrendComponent ? (
           <TrendComponent />
         ) : (
-          <div className="text-slate-500">Select a stat to view trends</div>
+          <div className="text-slate-500">Select the Fuel Level Stat to view trend</div>
         )}
       </div>
     </Card>

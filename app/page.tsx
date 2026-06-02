@@ -3,6 +3,7 @@ import { DashboardGauges } from "@/src/features/dashboard/components/DashboardGu
 import { DashboardHeader } from "@/src/features/dashboard/components/DashboardHeader";
 import { DashboardStats } from "@/src/features/dashboard/components/DashboardStats";
 import { DashboardTrends } from "@/src/features/dashboard/components/DashboardTrends";
+import { DashboardControls } from "@/src/features/dashboard/components/DashboardControl";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
         header: <DashboardHeader />,
         gauges: <DashboardGauges />,
         stats: <DashboardStats />,
-        trends: <DashboardTrends />
+        trends: <DashboardTrends />,
+        controls: <DashboardControls />
       }} />
     </div>
   )
