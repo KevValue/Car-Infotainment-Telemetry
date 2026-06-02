@@ -6,6 +6,7 @@ interface DashboardCore {
   header: ReactNode
   gauges: ReactNode
   stats: ReactNode
+  trends: ReactNode
 }
 
 interface DashLayoutProps {
@@ -31,6 +32,11 @@ export function DashboardLayout({ core, children }: DashLayoutProps) {
           <GlobalGridItem span={3}>
             <div className="py-4">Stats</div>
             <aside>{core.stats}</aside>
+          </GlobalGridItem>
+
+          <GlobalGridItem span={3}>
+            <div className="py-4">Trends</div>
+            <aside>{core.trends}</aside>
           </GlobalGridItem>
 
           <GlobalGridItem span={6}>

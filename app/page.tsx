@@ -2,6 +2,7 @@ import { DashboardLayout } from "@/src/features/dashboard/components/DashboardLa
 import { DashboardGauges } from "@/src/features/dashboard/components/DashboardGuages";
 import { DashboardHeader } from "@/src/features/dashboard/components/DashboardHeader";
 import { DashboardStats } from "@/src/features/dashboard/components/DashboardStats";
+import { DashboardTrends } from "@/src/features/dashboard/components/DashboardTrends";
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
       <DashboardLayout core={{
         header: <DashboardHeader />,
         gauges: <DashboardGauges />,
-        stats: <DashboardStats />
+        stats: <DashboardStats />,
+        trends: <DashboardTrends />
       }} />
     </div>
   )

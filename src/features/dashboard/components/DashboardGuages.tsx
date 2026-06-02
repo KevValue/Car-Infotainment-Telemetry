@@ -16,7 +16,6 @@ export function DashboardGauges() {
   return (
     <div>
       <SpeedGauge value={speed ?? 120} />
-      <SpeedGauge value={70} />
       <div><TelemetryProducer /></div>
       <div><TelemetryProducer n={100} intervalMs={50} /></div>
       <div><TelemetryProducer ramp={{ apex: 120, steps: 100 }} /></div>
