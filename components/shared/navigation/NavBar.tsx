@@ -38,7 +38,7 @@ export function NavBar({ links, children }: NavBarProps) {
   return (
     <>
       {scrolled && <div className="h-[100px]"></div>}
-      <div className="flex md:hidden items-center justify-between px-4 py-4 z- relative">
+      <div className="flex md:hidden items-center justify-between px-4 py-4 z-10 relative">
         <div className="flex items-center gap-2">
           {visibleLinks.map(link => (
             <Link

@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/Button"
 import { useTelemetryStore } from "../../telemetry/store/useTelemetryStore"
 
 interface TelemetryProducerProps {
+  label?: string
   n?: number
   intervalMs?: number
   ramp?: {
@@ -9,7 +11,7 @@ interface TelemetryProducerProps {
   }
 }
 
-export function TelemetryProducer({ n, intervalMs, ramp }: TelemetryProducerProps) {
+export function TelemetryProducer({ label, n, intervalMs, ramp }: TelemetryProducerProps) {
   // smooth interval
   const updateSpeed = useTelemetryStore((s) => s.setSpeed)
 
@@ -69,23 +71,23 @@ export function TelemetryProducer({ n, intervalMs, ramp }: TelemetryProducerProp
     }
 
     return (
-      <button onClick={runRamp}>
+      <Button onClick={runRamp}>
         Run Ramp to {apex}
-      </button>
+      </Button>
     )
   }
 
   if (n) {
     return (
-      <button onClick={() => sendRandomMultiple(n)}>
-        Send Random Speed
-      </button>
+      <Button onClick={() => sendRandomMultiple(n)}>
+        {`Send Random Speed ${n} times`}
+      </Button>
     )
   }
 
   return (
-    <button onClick={sendRandom}>
-      Send Random Speed
-    </button>
+    <Button onClick={sendRandom}>
+      Send Random Speed Once
+    </Button>
   )
 }

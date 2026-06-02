@@ -7,6 +7,7 @@ interface DashboardCore {
   gauges: ReactNode
   stats: ReactNode
   trends: ReactNode
+  controls: ReactNode
 }
 
 interface DashLayoutProps {
