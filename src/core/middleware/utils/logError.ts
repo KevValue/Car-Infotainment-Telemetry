@@ -1,4 +1,4 @@
-import { winstonLogger } from "../../winston"
+import { winstonLogger } from "../../logging/winston"
 
 export function logError(error: unknown, meta: Record<string, any>) {
   //create err class, inject with error context
