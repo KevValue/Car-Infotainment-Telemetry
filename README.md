@@ -46,3 +46,4 @@ This project is both a portfolio piece and a personal benchmark for how I approa
 ### UI Patterns
 
 - Consistent Grid System: a unified and responsive grid and grid item component architecture
+- Standard Gauge and Card component follows atomic design principles, normalized data with math primitives
