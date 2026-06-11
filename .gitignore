@@ -2,6 +2,7 @@
 #
 
 config.md
+/src/config/core.env
 
 # dependencies
 /node_modules
