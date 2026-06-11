@@ -1,5 +1,7 @@
 # Telemetry
 
+Working Demo Link found at about section.
+
 ## Abstract
 
 This project is a fully typed, feature-modular Next.js application designed to demonstrate modern frontend engineering practices. The goal is to show how a scalable, maintainable, production-ready codebase can be organized from the ground up using strong TypeScript discipline and feature-based architecture.
